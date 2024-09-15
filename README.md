@@ -17,7 +17,7 @@ Questo programma permette di ascoltare i segnali dalla rete CAN utilizzando una 
 1) Clona la repository:
 
 bash
-git clone https://github.com/tuo-username/CAN_Streamer_UDP.git
+git clone https://github.com/Mattemn97/Streamer_PEAK_2_UDP.git
 
 bash
 cd CAN_Streamer_UDP
