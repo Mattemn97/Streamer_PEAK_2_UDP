@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: executable
-          path: dist/main.exe  # specifica il path del file eseguibile generato
+          path: dist/Streamer_PEAK_2_UDP.exe  # specifica il path del file eseguibile generato
 
   release:
     needs: build
@@ -47,6 +47,6 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/main.exe  # File da pubblicare nella release
+          files: dist/Streamer_PEAK_2_UDP.exe  # File da pubblicare nella release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token per autenticazione
