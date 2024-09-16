@@ -49,4 +49,4 @@ jobs:
         with:
           files: dist/Streamer_PEAK_2_UDP.exe  # File da pubblicare nella release
         env:
-          GITHUB_TOKEN: ${{ secret.Sbrisolona }}  # GitHub token per autenticazione
+          GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}  # GitHub token per autenticazione
