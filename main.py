@@ -4,17 +4,14 @@ from streamer import start_streaming
 import threading
 
 
-def start_streaming_callback():
+def start_streaming_callback(selected_interface, address, port, dbc_file):
     """Callback function to start CAN streaming."""
-    params = gui.get_parameters()
-    if params is not None:
-        udp_address, udp_port, can_channel, can_bitrate, dbc_file = params
-        # Start the streaming in a separate thread
-        threading.Thread(
-            target=start_streaming, 
-            args=(udp_address, udp_port, can_channel, can_bitrate, dbc_file),
-            daemon=True
-        ).start()
+    # Start the streaming in a separate thread
+    threading.Thread(
+        target=start_streaming,
+        args=(address, port, selected_interface, 250000, dbc_file),  # Usa il bitrate corretto per il CAN
+        daemon=True
+    ).start()
 
 
 if __name__ == "__main__":
