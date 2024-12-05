@@ -1,20 +1,22 @@
 import tkinter as tk
 from gui import CANStreamerGUI
 from streamer import start_streaming
-import threading
 
 
-def start_streaming_callback(selected_interface, address, port, dbc_file):
-    """Callback function to start CAN streaming."""
-    # Start the streaming in a separate thread
-    threading.Thread(
-        target=start_streaming,
-        args=(address, port, selected_interface, 250000, dbc_file),  # Usa il bitrate corretto per il CAN
-        daemon=True
-    ).start()
+def start_streaming_callback(udp_address, udp_port, dbc_file, blf_file=None, start_recording=False):
+    app_callbacks = {
+        "update_green": app.update_green_indicator,
+        "update_red": app.update_red_indicator,
+    }
+    start_streaming(udp_address, udp_port, dbc_file, blf_file, start_recording, gui_callbacks=app_callbacks)
+
+
+def main():
+    global app
+    root = tk.Tk()
+    app = CANStreamerGUI(root, start_streaming_callback)
+    root.mainloop()
 
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    gui = CANStreamerGUI(root, start_streaming_callback)
-    root.mainloop()
+    main()
